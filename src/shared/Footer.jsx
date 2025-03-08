@@ -9,19 +9,14 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-import {
-  ButtonGroup,
-  Input,
-  InputIcon,
-  Button,
-} from "keep-react";
+import { ButtonGroup, Input, InputIcon, Button } from "keep-react";
 import { Envelope } from "phosphor-react";
 
 const Footer = () => {
   return (
-    <div className={`xl:px-[6%] bg-metal-200 dark:bg-metal-900 shadow-small `}>
+    <div className={` bg-metal-200 dark:bg-metal-900 shadow-small `}>
       <div className="mx-auto lg:px-20 px-6 py-10 2xl:px-0">
-        <div className="flex flex-col gap-12 lg:flex-row">
+        <div className="xl:px-[6%] flex flex-col gap-12 lg:flex-row">
           <footer className="w-full md:w-3/4 lg:w-1/2 mx-auto space-y-3">
             <h4 className="text-xl lg:text-3xl text-error-400 font-bold">
               Bistro Boss Restaurant
@@ -125,8 +120,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className={`border-t border-t-metal-400 py-5 text-cente `}>
-        <p className="text-body-4 font-normal text-center text-metal-600 dark:text-metal-300">
+      <div className={`bg-black py-5 text-cente `}>
+        <p className="text-body-4 font-normal text-center text-white dark:text-metal-300">
           &copy;{new Date().getFullYear()} All Rights Reserved by &nbsp;
           <Link href="/" target="_blank" className="font-medium">
             Tutor World ltd

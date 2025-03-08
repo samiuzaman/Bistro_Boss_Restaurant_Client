@@ -4,7 +4,7 @@ import NavSection from "../shared/NavSection";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="">
       <NavSection></NavSection>
       <Outlet></Outlet>
       <Footer></Footer>

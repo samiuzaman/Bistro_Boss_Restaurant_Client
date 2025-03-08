@@ -16,15 +16,16 @@ import {
 
 const NavSection = () => {
   return (
-    <div>
-      <Navbar className="w-full lg:w-5/6 mx-auto border-none">
+    <div className="w-11/12 lg:w-5/6 mx-auto">
+      <Navbar className="w-full fixed z-10 border-none bg-opacity-30 bg-black text-white">
         <NavbarContainer>
           <NavbarBrand>
-            <h4 className="">
-              Bistro Boss Restaurant
+            <h4 className="pl-6 text-2xl font-semibold">
+              Bistro Boss
+              <br /> <span className="text-xl font-medium">Restaurant</span>
             </h4>
           </NavbarBrand>
-          <NavbarList className="text-black font-bold">
+          <NavbarList className=" font-bold">
             <NavbarItem>HOME</NavbarItem>
             <NavbarItem>CONTACT US</NavbarItem>
             <NavbarItem>DASHBOARD</NavbarItem>
