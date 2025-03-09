@@ -13,14 +13,14 @@ import {
   NavbarItem,
   NavbarList,
 } from "keep-react";
-
+// w-full fixed z-10 border-none bg-opacity-30 bg-black text-white
 const NavSection = () => {
   return (
     <div className="w-11/12 lg:w-5/6 mx-auto">
-      <Navbar className="w-full fixed z-10 border-none bg-opacity-30 bg-black text-white">
+      <Navbar className="w-full border-none ">
         <NavbarContainer>
           <NavbarBrand>
-            <h4 className="pl-6 text-2xl font-semibold">
+            <h4 className="pl-6 text-2xl font-semibold font-[Cinzel]">
               Bistro Boss
               <br /> <span className="text-xl font-medium">Restaurant</span>
             </h4>
@@ -47,10 +47,11 @@ const NavSection = () => {
           </NavbarList>
           <NavbarCollapseBtn />
           <NavbarCollapse>
-            <NavbarItem>Projects</NavbarItem>
-            <NavbarItem>Research</NavbarItem>
-            <NavbarItem>Contact</NavbarItem>
-            <NavbarItem>Sign In</NavbarItem>
+            <NavbarItem>HOME</NavbarItem>
+            <NavbarItem>CONTACT US</NavbarItem>
+            <NavbarItem>DASHBOARD</NavbarItem>
+            <NavbarItem>OUR MENU</NavbarItem>
+            <NavbarItem>OUR SHOP</NavbarItem>
             <NavbarItem active={true}>Sign Up</NavbarItem>
           </NavbarCollapse>
         </NavbarContainer>

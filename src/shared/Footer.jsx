@@ -124,7 +124,7 @@ const Footer = () => {
         <p className="text-body-4 font-normal text-center text-white dark:text-metal-300">
           &copy;{new Date().getFullYear()} All Rights Reserved by &nbsp;
           <Link href="/" target="_blank" className="font-medium">
-            Tutor World ltd
+            Bistro Boss Restaurant ltd
           </Link>
         </p>
       </div>
