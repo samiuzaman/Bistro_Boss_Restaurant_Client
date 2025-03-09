@@ -16,8 +16,8 @@ import {
 // w-full fixed z-10 border-none bg-opacity-30 bg-black text-white
 const NavSection = () => {
   return (
-    <div className="w-11/12 lg:w-5/6 mx-auto">
-      <Navbar className="w-full border-none ">
+    <div className="bg-white">
+      <Navbar className="w-11/12 lg:w-5/6 mx-auto border-none ">
         <NavbarContainer>
           <NavbarBrand>
             <h4 className="pl-6 text-2xl font-semibold font-[Cinzel]">

@@ -1,5 +1,3 @@
-import { Divider } from "keep-react";
-
 const Title = ({ title, subtitle }) => {
   return (
     <div className="w-72 mx-auto">

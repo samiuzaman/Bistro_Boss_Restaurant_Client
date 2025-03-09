@@ -9,10 +9,12 @@ import slide2 from "../../assets/home/slide2.jpg";
 import slide3 from "../../assets/home/slide3.jpg";
 import slide4 from "../../assets/home/slide4.jpg";
 import slide5 from "../../assets/home/slide5.jpg";
+import ServiceImg from "../../assets/home/chef-service.jpg";
 
 // import required modules
 import { Pagination } from "swiper/modules";
 import Title from "../../shared/Title";
+import Services from "./Services";
 
 const Category = () => {
   return (
@@ -62,6 +64,9 @@ const Category = () => {
           </p>
         </SwiperSlide>
       </Swiper>
+      <div className="bg-bannerBg bg-center bg-no-repeat bg-cover my-24 py-28">
+        <Services></Services>
+      </div>
     </div>
   );
 };
