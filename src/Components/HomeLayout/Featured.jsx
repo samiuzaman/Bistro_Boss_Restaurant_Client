@@ -4,7 +4,7 @@ import { Button } from "keep-react";
 
 const Featured = () => {
   return (
-    <div className="bg-featuredBg bg-center bg-no-repeat bg-cover bg-black/50 bg-blend-overlay py-20 ">
+    <div className="bg-featuredBg bg-center bg-no-repeat bg-cover bg-black/50 bg-blend-overlay bg-fixed py-20 ">
       <Title
         title="FROM OUR MENU"
         subtitle="---Check it out---"
