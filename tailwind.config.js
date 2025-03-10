@@ -6,6 +6,7 @@ const config = {
   theme: {
     backgroundImage: {
       bannerBg: "url('./assets/home/chef-service.jpg')",
+      featuredBg: "url('./assets/home/featured.jpg')",
     },
   },
 };

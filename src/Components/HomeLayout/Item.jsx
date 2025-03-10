@@ -1,5 +1,5 @@
 const Item = ({ menu }) => {
-  const { _id, name, image, recipe, category, price } = menu || {};
+  const { _id, name, image, recipe, price } = menu || {};
   return (
     <div className="flex items-center gap-3 border-b-2 py-3 ">
       <div>
