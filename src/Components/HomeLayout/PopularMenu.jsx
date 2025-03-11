@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Title from "../../shared/Title";
-import Item from "./Item";
 import { Button } from "keep-react";
+import Menu from "./Menu";
 
 const PopularMenu = () => {
   const [menus, setMenu] = useState([]);
@@ -19,7 +19,7 @@ const PopularMenu = () => {
       <Title title="FROM OUR MENU" subtitle="---Check it out---"></Title>
       <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-0 lg:gap-8 mt-12">
         {menus?.map((menu) => (
-          <Item key={menu._id} menu={menu}></Item>
+          <Menu key={menu._id} menu={menu}></Menu>
         ))}
       </div>
       <div className="flex justify-center mt-8">

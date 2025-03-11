@@ -1,22 +1,31 @@
-const Item = ({ menu }) => {
-  const { _id, name, image, recipe, price } = menu || {};
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "keep-react";
+
+const Item = ({ item }) => {
+  const { name, image, recipe } = item || {};
   return (
-    <div className="flex items-center gap-3 border-b-2 py-3 ">
-      <div>
-        <img
-          className="w-24 lg:w-20 h-16 lg:h-20 rounded-r-full rounded-bl-full"
-          src={image}
-        />
-      </div>
-      <div>
-        <div className="flex justify-between items-start">
-          <h3 className="text-xl font-medium font-[Cinzel]">
-            {name} -----------------
-          </h3>
-          <span className="text-[#BB8506]">{price}</span>
-        </div>
-        <p>{recipe}</p>
-      </div>
+    <div>
+      <Card className="h-full">
+        <CardHeader>
+          <img className="w-full h-full" src={image} />
+        </CardHeader>
+        <CardContent className="space-y-3 text-center">
+          <CardTitle>{name}</CardTitle>
+          <CardDescription>{recipe}</CardDescription>
+          <Button
+            variant="softBg"
+            className="border-b-2 border-[#BB8506] text-[#BB8506] hover:bg-[#1F2937] hover:text-[#BB8506]"
+          >
+            Add to Cart
+          </Button>
+        </CardContent>
+      </Card>
     </div>
   );
 };
