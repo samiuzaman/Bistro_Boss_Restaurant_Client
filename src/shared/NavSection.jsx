@@ -13,37 +13,57 @@ import {
   NavbarItem,
   NavbarList,
 } from "keep-react";
+import { NavLink } from "react-router-dom";
 // w-full fixed z-10 border-none bg-opacity-30 bg-black text-white
 const NavSection = () => {
   return (
-    <div className="bg-white">
-      <Navbar className="w-11/12 lg:w-5/6 mx-auto border-none ">
+    <div className="bg-black/20 top-0 fixed z-10 w-full">
+      <Navbar className="w-11/12 lg:w-5/6 mx-auto bg-white/0 border-none  ">
         <NavbarContainer>
           <NavbarBrand>
-            <h4 className="pl-6 text-2xl font-semibold font-[Cinzel]">
+            <h4 className="pl-6 text-2xl text-white font-semibold font-[Cinzel]">
               Bistro Boss
               <br /> <span className="text-xl font-medium">Restaurant</span>
             </h4>
           </NavbarBrand>
-          <NavbarList className=" font-bold">
-            <NavbarItem>HOME</NavbarItem>
-            <NavbarItem>CONTACT US</NavbarItem>
-            <NavbarItem>DASHBOARD</NavbarItem>
-            <NavbarItem>OUR MENU</NavbarItem>
-            <NavbarItem>OUR SHOP</NavbarItem>
-            <Dropdown placement="bottom-end">
-              <DropdownAction asChild>
-                <Avatar>
-                  <AvatarFallback>KR</AvatarFallback>
-                </Avatar>
-              </DropdownAction>
-              <DropdownContent
-                align="end"
-                className="border border-metal-100 dark:border-metal-800"
-              >
-                <DropdownItem>Logout</DropdownItem>
-              </DropdownContent>
-            </Dropdown>
+          <NavbarList className=" font-bold ">
+            <NavbarItem className="text-white">
+              <NavLink to="/">HOME</NavLink>
+            </NavbarItem>
+            <NavbarItem className="text-white">
+              <NavLink to="/contact">CONTACT US</NavLink>
+            </NavbarItem>
+            <NavbarItem className="text-white">
+              <NavLink to="/dashboard">DASHBOARD</NavLink>
+            </NavbarItem>
+            <NavbarItem className="text-white">
+              <NavLink to="/our-menu">OUR MENU</NavLink>
+            </NavbarItem>
+            <NavbarItem className="text-white">
+              <NavLink to="/our-shop">OUR SHOP</NavLink>
+            </NavbarItem>
+            <div className="flex justify-center items-center">
+              <NavbarItem className="text-white">
+                <NavLink to="/login">Login</NavLink>
+              </NavbarItem>
+              <NavbarItem className="text-white">
+                <NavLink to="/logout">logout</NavLink>
+              </NavbarItem>
+              <Dropdown placement="bottom-end">
+                <DropdownAction asChild>
+                  <Avatar>
+                    <AvatarFallback>KR</AvatarFallback>
+                  </Avatar>
+                </DropdownAction>
+                <DropdownContent
+                  align="end"
+                  className="border border-metal-100 dark:border-metal-800"
+                >
+                  <DropdownItem>Name</DropdownItem>
+                  <DropdownItem>Profile</DropdownItem>
+                </DropdownContent>
+              </Dropdown>
+            </div>
           </NavbarList>
           <NavbarCollapseBtn />
           <NavbarCollapse>
