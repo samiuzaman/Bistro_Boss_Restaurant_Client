@@ -20,7 +20,7 @@ const NavSection = () => {
   
   return (
     <div
-      className={`bg-black/30 top-0 fixed z-10 w-full ${
+      className={`bg-black/40 top-0 fixed z-10 w-full ${
         location.pathname === "/login" || location.pathname === "/register"
           ? "hidden"
           : "block"
