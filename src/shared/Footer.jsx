@@ -11,7 +11,13 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className={` bg-[#111827] dark:bg-metal-900 shadow-small `}>
+    <div
+      className={`${
+        location.pathname === "/login" || location.pathname === "/register"
+          ? "hidden"
+          : "block"
+      } bg-[#111827] dark:bg-metal-900 shadow-small `}
+    >
       <div className="mx-auto lg:px-20 px-6 py-10 2xl:px-0">
         <div className="w-4/5 mx-auto xl:px-[6%] flex flex-col gap-12 md:flex-row justify-center items-center">
           <footer className="w-full md:w-1/2 mx-auto space-y-3">

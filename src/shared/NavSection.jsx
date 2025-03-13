@@ -13,11 +13,19 @@ import {
   NavbarItem,
   NavbarList,
 } from "keep-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 // w-full fixed z-10 border-none bg-opacity-30 bg-black text-white
 const NavSection = () => {
+  const location = useLocation();
+  
   return (
-    <div className="bg-black/20 top-0 fixed z-10 w-full">
+    <div
+      className={`bg-black/30 top-0 fixed z-10 w-full ${
+        location.pathname === "/login" || location.pathname === "/register"
+          ? "hidden"
+          : "block"
+      }`}
+    >
       <Navbar className="w-11/12 lg:w-5/6 mx-auto bg-white/0 border-none  ">
         <NavbarContainer>
           <NavbarBrand>

@@ -1,45 +1,31 @@
-import { Envelope, FacebookLogo, GoogleLogo, Lock } from "phosphor-react";
 import {
   Button,
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
-  Divider,
   Input,
-  InputIcon,
   Label,
 } from "keep-react";
 import Authentication2 from "../assets/others/authentication2.png";
+import { IoLogoGithub } from "react-icons/io5";
+import { FaFacebookF, FaGoogle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="w-11/12 lg:w-4/5 mx-auto bg-authenticationBg flex justify-center items-center py-6">
-      <div className="w-full lg:w-1/2 mx-auto">
+    <div className="w-11/12 lg:w-4/5 mx-auto h-screen bg-authenticationBg flex justify-center items-center py-6">
+      <div className="w-full lg:w-1/2 mx-auto hidden md:block">
         <img src={Authentication2} />
       </div>
       <div className="w-full lg:w-1/2 mx-auto">
-        <Card className="max-w-sm">
+        <Card className="max-w-sm mx-auto bg-">
           <CardContent className="space-y-3">
             <CardHeader>
-              <CardTitle>Create an account</CardTitle>
-              <CardDescription>
-                If you don&apos;t have any account then just click here
-              </CardDescription>
+              <CardTitle className="text-center">Login</CardTitle>
             </CardHeader>
-            <div className="flex items-center justify-between gap-3">
-              <Button variant="outline" color="secondary" className="w-full">
-                <GoogleLogo size={20} className="mr-1.5" />
-                Google
-              </Button>
-              <Button variant="outline" color="secondary" className="w-full">
-                <FacebookLogo size={20} className="mr-1.5" />
-                Facebook
-              </Button>
-            </div>
-            <Divider>Or</Divider>
-            <form className="space-y-2">
+
+            <form className="space-y-4">
               <fieldset className="space-y-1">
                 <Label htmlFor="email">Email*</Label>
                 <div className="relative">
@@ -47,11 +33,8 @@ const Login = () => {
                     id="email"
                     type="email"
                     placeholder="Enter email"
-                    className="ps-11"
+                    className=""
                   />
-                  <InputIcon>
-                    <Envelope size={19} color="#AFBACA" />
-                  </InputIcon>
                 </div>
               </fieldset>
               <fieldset className="space-y-1">
@@ -61,17 +44,59 @@ const Login = () => {
                     id="password"
                     placeholder="Enter password"
                     type="password"
-                    className="ps-11"
+                    className=""
                   />
-                  <InputIcon>
-                    <Lock size={19} color="#AFBACA" />
-                  </InputIcon>
                 </div>
               </fieldset>
-              <Button type="submit" className="!mt-3 block w-full">
+              <div className="space-y-3 pt-1">
+                <fieldset className="space-y-1">
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      placeholder="Enter password"
+                      type="password"
+                      className=""
+                    />
+                  </div>
+                  <Label htmlFor="password">Reload Captcha</Label>
+                </fieldset>
+                <fieldset className="space-y-1">
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      placeholder="Enter password"
+                      type="password"
+                      className=""
+                    />
+                  </div>
+                </fieldset>
+              </div>
+              <Button type="submit" className="!mt-3 block w-full bg-[#D1A054]">
                 Create Account
               </Button>
             </form>
+            <div className="space-y-2">
+              <p className="text-[#D1A054] text-center">
+                New here?
+                <Link to="/register">
+                  <span className="font-semibold pl-2">
+                    Create a New Account
+                  </span>{" "}
+                </Link>
+              </p>
+              <p className="text-center">Or sign in with</p>
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <Button variant="outline" color="secondary">
+                <FaGoogle size={20} className="mr-1.5" />
+              </Button>
+              <Button variant="outline" color="secondary">
+                <FaFacebookF size={20} className="mr-1.5 " />
+              </Button>
+              <Button variant="outline" color="secondary">
+                <IoLogoGithub size={20} className="mr-1.5" />
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </div>
