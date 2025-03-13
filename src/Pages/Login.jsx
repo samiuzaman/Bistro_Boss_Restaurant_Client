@@ -11,10 +11,15 @@ import Authentication2 from "../assets/others/authentication2.png";
 import { IoLogoGithub } from "react-icons/io5";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   return (
     <div className="w-11/12 lg:w-4/5 mx-auto h-screen bg-authenticationBg flex justify-center items-center py-6">
+      <Helmet>
+        <title>Login | Bistro Boss</title>
+        <link rel="canonical" href="/login" />
+      </Helmet>
       <div className="w-full lg:w-1/2 mx-auto hidden md:block">
         <img src={Authentication2} />
       </div>
