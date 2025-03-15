@@ -1,4 +1,4 @@
-import { Parallax, Background } from "react-parallax";
+import { Parallax } from "react-parallax";
 
 const Cover = ({ bgimg, title, subtitle }) => {
   return (

@@ -5,8 +5,8 @@ import Contact from "../Pages/Contact";
 import Dashboard from "../Pages/Dashboard";
 import OurMenu from "../Pages/OurMenu";
 import OurShop from "../Pages/OurShop";
-import Register from "../Pages/Register";
-import Login from "../Pages/Login";
+import Login from "../Auth/Login";
+import Register from "../Auth/Register";
 
 const Routes = createBrowserRouter([
   {

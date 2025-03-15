@@ -56,28 +56,23 @@ const Login = () => {
               <div className="space-y-3 pt-1">
                 <fieldset className="space-y-1">
                   <div className="relative">
-                    <Input
-                      id="password"
-                      placeholder="Enter password"
-                      type="password"
-                      className=""
-                    />
+                    <Input name="password" type="text" className="" />
                   </div>
                   <Label htmlFor="password">Reload Captcha</Label>
                 </fieldset>
                 <fieldset className="space-y-1">
                   <div className="relative">
                     <Input
-                      id="password"
-                      placeholder="Enter password"
-                      type="password"
+                      name="captcha"
+                      placeholder="Type Here"
+                      type="text"
                       className=""
                     />
                   </div>
                 </fieldset>
               </div>
               <Button type="submit" className="!mt-3 block w-full bg-[#D1A054]">
-                Create Account
+                Log in
               </Button>
             </form>
             <div className="space-y-2">

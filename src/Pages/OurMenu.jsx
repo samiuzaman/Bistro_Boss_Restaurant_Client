@@ -5,10 +5,15 @@ import DessertBg from "../assets/menu/dessert-bg.jpeg";
 import PizzaBg from "../assets/menu/pizza-bg.jpg";
 import SaladBg from "../assets/menu/salad-bg.jpg";
 import SoupBg from "../assets/menu/soup-bg.jpg";
+import { Helmet } from "react-helmet-async";
 
 const OurMenu = () => {
   return (
     <div>
+      <Helmet>
+        <title>OurMenu | Bistro Boss</title>
+        <link rel="canonical" href="/" />
+      </Helmet>
       <Cover
         bgimg={Banner3}
         title="OUR MENU"
