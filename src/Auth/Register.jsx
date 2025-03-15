@@ -18,7 +18,7 @@ const Register = () => {
     <div className="w-11/12 lg:w-4/5 mx-auto h-screen bg-authenticationBg flex flex-row-reverse justify-center items-center py-6">
       <Helmet>
         <title>SignIn | Bistro Boss</title>
-        <link rel="canonical" href="/login" />
+        <link rel="canonical" href="/register" />
       </Helmet>
       <div className="w-full lg:w-1/2 mx-auto hidden md:block">
         <img src={Authentication2} />

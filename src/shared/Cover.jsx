@@ -13,7 +13,7 @@ const Cover = ({ bgimg, title, subtitle }) => {
           <h3 className="text-2xl lg:text-5xl text-white font-bold font-[Cinzel] uppercase">
             {title}
           </h3>
-          <p className="font-[Cinzel]  text-white">{subtitle}</p>
+          <p className="font-[Cinzel] text-white">{subtitle}</p>
         </div>
       </div>
     </Parallax>

@@ -1,5 +1,5 @@
 const Menu = ({ menu }) => {
-  const { _id, name, image, recipe, price } = menu || {};
+  const { name, image, recipe, price, category } = menu || {};
   return (
     <div className="flex Menus-center gap-3 border-b-2 py-3 ">
       <div>
@@ -9,7 +9,7 @@ const Menu = ({ menu }) => {
         />
       </div>
       <div>
-        <div className="flex justify-between Menus-start">
+        <div className="w-full flex justify-between items-start">
           <h3 className="text-xl font-medium font-[Cinzel]">
             {name} -----------------
           </h3>
