@@ -11,7 +11,7 @@ const Item = ({ item }) => {
   const { name, image, recipe } = item || {};
   return (
     <div>
-      <Card className="h-full">
+      <Card className=" h-full">
         <CardHeader>
           <img className="w-full h-full" src={image} />
         </CardHeader>

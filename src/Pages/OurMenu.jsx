@@ -9,6 +9,8 @@ import { Helmet } from "react-helmet-async";
 import useMenu from "../Hooks/useMenu";
 import Title from "../shared/Title";
 import MenuCategory from "../Components/OurMenu/MenuCategory";
+import { Button } from "keep-react";
+import { Link } from "react-router-dom";
 
 const OurMenu = () => {
   const [menu] = useMenu();
@@ -42,6 +44,14 @@ const OurMenu = () => {
       ></Cover>
       <div className="w-11/12 lg:w-5/6 xl:w-4/5 mx-auto py-16">
         <MenuCategory items={dessert.slice(0, 6)}></MenuCategory>
+        <Link to={`/our-shop/dessert`} className="flex justify-center pt-6">
+          <Button
+            variant="link"
+            className="border-b-2 border-[#BB8506] text-[#BB8506] hover:bg-[#1F2937] hover:text-[#BB8506]"
+          >
+            ORDER YOUR FAVOURITE FOOD
+          </Button>
+        </Link>
       </div>
       {/* Pizza Menu */}
       <Cover
@@ -50,8 +60,15 @@ const OurMenu = () => {
         subtitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
       ></Cover>
       <div className="w-11/12 lg:w-5/6 xl:w-4/5 mx-auto py-16">
-        
         <MenuCategory items={pizza.slice(0, 6)}></MenuCategory>
+        <Link to={`/our-shop`} className="flex justify-center pt-6">
+          <Button
+            variant="link"
+            className="border-b-2 border-[#BB8506] text-[#BB8506] hover:bg-[#1F2937] hover:text-[#BB8506]"
+          >
+            ORDER YOUR FAVOURITE FOOD
+          </Button>
+        </Link>
       </div>
       {/* Salad Menu */}
       <Cover
@@ -60,8 +77,15 @@ const OurMenu = () => {
         subtitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
       ></Cover>
       <div className="w-11/12 lg:w-5/6 xl:w-4/5 mx-auto py-16">
-        
         <MenuCategory items={salad.slice(0, 6)}></MenuCategory>
+        <Link to={`/our-shop`} className="flex justify-center pt-6">
+          <Button
+            variant="link"
+            className="border-b-2 border-[#BB8506] text-[#BB8506] hover:bg-[#1F2937] hover:text-[#BB8506]"
+          >
+            ORDER YOUR FAVOURITE FOOD
+          </Button>
+        </Link>
       </div>
       {/* Soup Menu */}
       <Cover
@@ -70,8 +94,15 @@ const OurMenu = () => {
         subtitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
       ></Cover>
       <div className="w-11/12 lg:w-5/6 xl:w-4/5 mx-auto py-16">
-        
         <MenuCategory items={soup.slice(0, 6)}></MenuCategory>
+        <Link to={`/our-shop`} className="flex justify-center pt-6">
+          <Button
+            variant="link"
+            className="border-b-2 border-[#BB8506] text-[#BB8506] hover:bg-[#1F2937] hover:text-[#BB8506]"
+          >
+            ORDER YOUR FAVOURITE FOOD
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -1,6 +1,4 @@
-import { Button } from "keep-react";
 import Menu from "../HomeLayout/Menu";
-
 
 const MenuCategory = ({ items }) => {
   return (
@@ -9,9 +7,6 @@ const MenuCategory = ({ items }) => {
         {items?.map((menu) => (
           <Menu key={menu._id} menu={menu}></Menu>
         ))}
-      </div>
-      <div className="flex justify-center pt-6">
-        <Button variant="link" className="text-black border-b-2 border-black">ORDER YOUR FAVOURITE FOOD</Button>
       </div>
     </div>
   );
