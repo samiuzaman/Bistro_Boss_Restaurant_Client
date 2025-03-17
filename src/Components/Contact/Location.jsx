@@ -4,7 +4,7 @@ import { IoTime } from "react-icons/io5";
 
 const Location = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-6 py-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-6 ">
       <div className="w-full">
         <div className="bg-[#D1A054] py-2 flex justify-center text-white text-3xl">
           <PiPhoneCallFill />
