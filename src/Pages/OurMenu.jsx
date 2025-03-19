@@ -44,7 +44,7 @@ const OurMenu = () => {
       ></Cover>
       <div className="w-11/12 lg:w-5/6 xl:w-4/5 mx-auto py-16">
         <MenuCategory items={dessert.slice(0, 6)}></MenuCategory>
-        <Link to={`/our-shop/dessert`} className="flex justify-center pt-6">
+        <Link to={`/our-shop/1`} className="flex justify-center pt-6">
           <Button
             variant="link"
             className="border-b-2 border-[#BB8506] text-[#BB8506] hover:bg-[#1F2937] hover:text-[#BB8506]"
@@ -61,7 +61,7 @@ const OurMenu = () => {
       ></Cover>
       <div className="w-11/12 lg:w-5/6 xl:w-4/5 mx-auto py-16">
         <MenuCategory items={pizza.slice(0, 6)}></MenuCategory>
-        <Link to={`/our-shop`} className="flex justify-center pt-6">
+        <Link to={`/our-shop/2`} className="flex justify-center pt-6">
           <Button
             variant="link"
             className="border-b-2 border-[#BB8506] text-[#BB8506] hover:bg-[#1F2937] hover:text-[#BB8506]"
@@ -78,7 +78,7 @@ const OurMenu = () => {
       ></Cover>
       <div className="w-11/12 lg:w-5/6 xl:w-4/5 mx-auto py-16">
         <MenuCategory items={salad.slice(0, 6)}></MenuCategory>
-        <Link to={`/our-shop`} className="flex justify-center pt-6">
+        <Link to={`/our-shop/3`} className="flex justify-center pt-6">
           <Button
             variant="link"
             className="border-b-2 border-[#BB8506] text-[#BB8506] hover:bg-[#1F2937] hover:text-[#BB8506]"
@@ -95,7 +95,7 @@ const OurMenu = () => {
       ></Cover>
       <div className="w-11/12 lg:w-5/6 xl:w-4/5 mx-auto py-16">
         <MenuCategory items={soup.slice(0, 6)}></MenuCategory>
-        <Link to={`/our-shop`} className="flex justify-center pt-6">
+        <Link to={`/our-shop/4`} className="flex justify-center pt-6">
           <Button
             variant="link"
             className="border-b-2 border-[#BB8506] text-[#BB8506] hover:bg-[#1F2937] hover:text-[#BB8506]"

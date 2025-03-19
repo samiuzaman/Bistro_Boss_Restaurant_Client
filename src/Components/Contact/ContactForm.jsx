@@ -53,6 +53,7 @@ const ContactForm = () => {
               rows={8}
             />
           </fieldset>
+          <div>I am not a robot</div>
 
           <Button type="submit" className="!mt-3 block w-full bg-[#D1A054]">
             Send Message

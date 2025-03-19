@@ -12,8 +12,23 @@ import { IoLogoGithub } from "react-icons/io5";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../Hooks/useAuth";
 
 const Login = () => {
+  const { user, loginWithGoogle } = useAuth();
+  console.log("User = ", user);
+
+  const handleLoginGoogle = () => {
+    console.log("Google Button Clicked");
+    loginWithGoogle()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="w-11/12 lg:w-4/5 mx-auto h-screen bg-authenticationBg flex justify-center items-center py-6">
       <Helmet>
@@ -87,7 +102,11 @@ const Login = () => {
               <p className="text-center">Or sign in with</p>
             </div>
             <div className="flex items-center justify-center gap-3">
-              <Button variant="outline" color="secondary">
+              <Button
+                onClick={handleLoginGoogle}
+                variant="outline"
+                color="secondary"
+              >
                 <FaGoogle size={20} className="mr-1.5" />
               </Button>
               <Button variant="outline" color="secondary">
