@@ -66,7 +66,7 @@ const Register = () => {
                 </div>
               </fieldset>
 
-              <Button type="submit" className="!mt-3 block w-full bg-[#D1A054]">
+              <Button type="submit" className="mt-5 block w-full bg-[#D1A054]">
                 Register
               </Button>
             </form>
@@ -77,18 +77,6 @@ const Register = () => {
                   <span className="font-semibold pl-2">Go to log in</span>
                 </Link>
               </p>
-              <p className="text-center">Or sign in with</p>
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <Button variant="outline" color="secondary">
-                <FaGoogle size={20} className="mr-1.5" />
-              </Button>
-              <Button variant="outline" color="secondary">
-                <FaFacebookF size={20} className="mr-1.5 " />
-              </Button>
-              <Button variant="outline" color="secondary">
-                <IoLogoGithub size={20} className="mr-1.5" />
-              </Button>
             </div>
           </CardContent>
         </Card>

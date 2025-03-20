@@ -4,6 +4,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  Divider,
   Input,
   Label,
 } from "keep-react";
@@ -86,7 +87,7 @@ const Login = () => {
                   </div>
                 </fieldset>
               </div>
-              <Button type="submit" className="!mt-3 block w-full bg-[#D1A054]">
+              <Button type="submit" className="mt-5 block w-full bg-[#D1A054]">
                 Log in
               </Button>
             </form>
@@ -99,7 +100,9 @@ const Login = () => {
                   </span>{" "}
                 </Link>
               </p>
-              <p className="text-center">Or sign in with</p>
+              <Divider color="error" variant="center">
+                Or
+              </Divider>
             </div>
             <div className="flex items-center justify-center gap-3">
               <Button
@@ -107,13 +110,11 @@ const Login = () => {
                 variant="outline"
                 color="secondary"
               >
-                <FaGoogle size={20} className="mr-1.5" />
-              </Button>
-              <Button variant="outline" color="secondary">
-                <FaFacebookF size={20} className="mr-1.5 " />
-              </Button>
-              <Button variant="outline" color="secondary">
-                <IoLogoGithub size={20} className="mr-1.5" />
+                <img
+                  src="https://i.ibb.co/TvvzXfq/google.png"
+                  className="w-8 h-8 mr-2"
+                />{" "}
+                Login with Google
               </Button>
             </div>
           </CardContent>

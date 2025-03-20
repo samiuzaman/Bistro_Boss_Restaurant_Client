@@ -1,6 +1,7 @@
 import {
   Avatar,
   AvatarFallback,
+  Button,
   Dropdown,
   DropdownAction,
   DropdownContent,
@@ -13,11 +14,15 @@ import {
   NavbarItem,
   NavbarList,
 } from "keep-react";
+
 import { NavLink, useLocation } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 // w-full fixed z-10 border-none bg-opacity-30 bg-black text-white
 const NavSection = () => {
   const location = useLocation();
-  
+  const { user, handleSignOut } = useAuth();
+  console.log("Navbar check user", user);
+
   return (
     <div
       className={`bg-black/40 top-0 fixed z-10 w-full ${
@@ -51,26 +56,27 @@ const NavSection = () => {
               <NavLink to="/our-shop">OUR SHOP</NavLink>
             </NavbarItem>
             <div className="flex justify-center items-center">
-              <NavbarItem className="text-white">
-                <NavLink to="/login">Login</NavLink>
-              </NavbarItem>
-              <NavbarItem className="text-white">
-                <NavLink to="/logout">logout</NavLink>
-              </NavbarItem>
-              <Dropdown placement="bottom-end">
-                <DropdownAction asChild>
-                  <Avatar>
-                    <AvatarFallback>KR</AvatarFallback>
-                  </Avatar>
-                </DropdownAction>
-                <DropdownContent
-                  align="end"
-                  className="border border-metal-100 dark:border-metal-800"
-                >
-                  <DropdownItem>Name</DropdownItem>
-                  <DropdownItem>Profile</DropdownItem>
-                </DropdownContent>
-              </Dropdown>
+              {user?.email ? (
+                <Dropdown placement="bottom-end">
+                  <DropdownAction asChild>
+                    <Avatar>
+                      <AvatarFallback>KR</AvatarFallback>
+                    </Avatar>
+                  </DropdownAction>
+                  <DropdownContent
+                    align="end"
+                    className="border border-metal-100 dark:border-metal-800"
+                  >
+                    <DropdownItem>Name</DropdownItem>
+                    <DropdownItem>Profile</DropdownItem>
+                    <DropdownItem onClick={handleSignOut}>Logout</DropdownItem>
+                  </DropdownContent>
+                </Dropdown>
+              ) : (
+                <NavbarItem className="text-white">
+                  <NavLink to="/login">Login</NavLink>
+                </NavbarItem>
+              )}
             </div>
           </NavbarList>
           <NavbarCollapseBtn />
