@@ -20,8 +20,13 @@ import useAuth from "../Hooks/useAuth";
 // w-full fixed z-10 border-none bg-opacity-30 bg-black text-white
 const NavSection = () => {
   const location = useLocation();
-  const { user, handleSignOut } = useAuth();
+  const { setUser, user, handleSignOut } = useAuth();
   console.log("Navbar check user", user);
+  const handleSignOutButton = () => {
+    handleSignOut().then(() => {
+      setUser(null);
+    });
+  };
 
   return (
     <div
@@ -69,7 +74,9 @@ const NavSection = () => {
                   >
                     <DropdownItem>Name</DropdownItem>
                     <DropdownItem>Profile</DropdownItem>
-                    <DropdownItem onClick={handleSignOut}>Logout</DropdownItem>
+                    <DropdownItem onClick={handleSignOutButton}>
+                      Logout
+                    </DropdownItem>
                   </DropdownContent>
                 </Dropdown>
               ) : (

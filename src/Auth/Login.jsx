@@ -9,16 +9,16 @@ import {
   Label,
 } from "keep-react";
 import Authentication2 from "../assets/others/authentication2.png";
-import { IoLogoGithub } from "react-icons/io5";
-import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Login = () => {
-  const { user, loginWithGoogle } = useAuth();
+  const { user, setUser, loginWithGoogle, loginEmailPassword } = useAuth();
   console.log("User = ", user);
 
+  // Login with Google
   const handleLoginGoogle = () => {
     console.log("Google Button Clicked");
     loginWithGoogle()
@@ -28,6 +28,23 @@ const Login = () => {
       .catch((error) => {
         console.log(error.message);
       });
+  };
+
+  // Login with Email & Password
+  const handleLoginEmailPassword = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.loginPass.value;
+    const captcha = form.captcha.value;
+
+    console.log(`email: ${email}, password: ${password} captcha: ${captcha}`);
+
+    loginEmailPassword(email, password).then((result) => {
+      setUser(result.user);
+      toast.success(`Login Successful`);
+      console.log("Login User: ", result.user);
+    });
   };
 
   return (
@@ -46,29 +63,31 @@ const Login = () => {
               <CardTitle className="text-center">Login</CardTitle>
             </CardHeader>
 
-            <form className="space-y-4">
+            <form onSubmit={handleLoginEmailPassword} className="space-y-4">
               <fieldset className="space-y-1">
                 <Label htmlFor="email">Email*</Label>
                 <div className="relative">
                   <Input
-                    id="email"
+                    name="email"
                     type="email"
                     placeholder="Enter email"
                     className=""
                   />
                 </div>
               </fieldset>
+
               <fieldset className="space-y-1">
                 <Label htmlFor="password">Password*</Label>
                 <div className="relative">
                   <Input
-                    id="password"
-                    placeholder="Enter password"
+                    name="loginPass"
                     type="password"
+                    placeholder="Enter Password"
                     className=""
                   />
                 </div>
               </fieldset>
+
               <div className="space-y-3 pt-1">
                 <fieldset className="space-y-1">
                   <div className="relative">

@@ -4,7 +4,7 @@ import Item from "../HomeLayout/Item";
 import { useParams } from "react-router-dom";
 
 const ItemCategory = () => {
-  const [menu, setMenu] = useMenu();
+  const [menu] = useMenu();
   const { category } = useParams();
   console.log("Params: category =", category);
   const dessert = menu?.filter((item) => item.category === "dessert");
@@ -16,13 +16,10 @@ const ItemCategory = () => {
     <div>
       <Tabs
         variant="underline"
-        defaultValue={`${category < 0 ? category : "1"}`}
+        defaultValue={`${category ? category : "dessert"}`}
         className="mx-auto"
       >
-        <TabsList
-          defaultValue="dessert"
-          className="flex justify-center mb-6 uppercase"
-        >
+        <TabsList className="flex justify-center mb-6 uppercase">
           <TabsItem value="dessert">DESSERTS</TabsItem>
           <TabsItem value="pizza">PIZZA</TabsItem>
           <TabsItem value="salad">SALAD</TabsItem>

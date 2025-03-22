@@ -39,7 +39,7 @@ const Register = () => {
         displayName: name,
       });
       setUser(result.user);
-      console.log(result);
+      toast.success("User Registration Successful");
     });
   };
 
