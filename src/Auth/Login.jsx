@@ -13,10 +13,21 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  validateCaptcha,
+} from "react-simple-captcha";
+import { useEffect, useRef, useState } from "react";
 
 const Login = () => {
   const { user, setUser, loginWithGoogle, loginEmailPassword } = useAuth();
-  console.log("User = ", user);
+  const captchaRef = useRef(null);
+  const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
 
   // Login with Google
   const handleLoginGoogle = () => {
@@ -45,6 +56,13 @@ const Login = () => {
       toast.success(`Login Successful`);
       console.log("Login User: ", result.user);
     });
+  };
+
+  const handleValidateCaptcha = () => {
+    const user_captcha_value = captchaRef.current.value;
+    if (validateCaptcha(user_captcha_value)) {
+      setDisabled(false);
+    }
   };
 
   return (
@@ -89,24 +107,30 @@ const Login = () => {
               </fieldset>
 
               <div className="space-y-3 pt-1">
-                <fieldset className="space-y-1">
-                  <div className="relative">
-                    <Input name="password" type="text" className="" />
-                  </div>
-                  <Label htmlFor="password">Reload Captcha</Label>
-                </fieldset>
-                <fieldset className="space-y-1">
+                <LoadCanvasTemplate />
+                <fieldset className="space-y-1 flex items-center gap-3">
                   <div className="relative">
                     <Input
                       name="captcha"
                       placeholder="Type Here"
                       type="text"
                       className=""
+                      ref={captchaRef}
                     />
+                  </div>
+                  <div
+                    onClick={handleValidateCaptcha}
+                    className="border-2 border-success-700 bg-success-500 hover:bg-success-700 text-white px-4 py-1 rounded-md h-full"
+                  >
+                    Validate
                   </div>
                 </fieldset>
               </div>
-              <Button type="submit" className="mt-5 block w-full bg-[#D1A054]">
+              <Button
+                disabled={disabled}
+                type="submit"
+                className="mt-5 block w-full bg-[#D1A054]"
+              >
                 Log in
               </Button>
             </form>

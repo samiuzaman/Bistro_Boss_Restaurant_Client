@@ -8,13 +8,14 @@ import {
   Label,
 } from "keep-react";
 import Authentication2 from "../assets/others/authentication2.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
 
 const Register = () => {
   const { setUser, createAccount, profileUpdate } = useAuth();
+  const navigate = useNavigate();
 
   const handleCreateAccount = (event) => {
     event.preventDefault();
@@ -40,6 +41,7 @@ const Register = () => {
       });
       setUser(result.user);
       toast.success("User Registration Successful");
+      navigate("/");
     });
   };
 
