@@ -19,42 +19,45 @@ const ItemCategory = () => {
         defaultValue={`${category < 0 ? category : "1"}`}
         className="mx-auto"
       >
-        <TabsList className="flex justify-center mb-6 uppercase">
-          <TabsItem value="1">DESSERTS</TabsItem>
-          <TabsItem value="2">PIZZA</TabsItem>
-          <TabsItem value="3">SALAD</TabsItem>
-          <TabsItem value="4">SOUPS</TabsItem>
-          <TabsItem value="5">DRINKS</TabsItem>
+        <TabsList
+          defaultValue="dessert"
+          className="flex justify-center mb-6 uppercase"
+        >
+          <TabsItem value="dessert">DESSERTS</TabsItem>
+          <TabsItem value="pizza">PIZZA</TabsItem>
+          <TabsItem value="salad">SALAD</TabsItem>
+          <TabsItem value="soup">SOUPS</TabsItem>
+          <TabsItem value="drink">DRINKS</TabsItem>
         </TabsList>
-        <TabsContent value="1">
+        <TabsContent value="dessert">
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-6">
             {dessert?.map((item) => (
               <Item key={item._id} item={item}></Item>
             ))}
           </div>
         </TabsContent>
-        <TabsContent value="2">
+        <TabsContent value="pizza">
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-6">
             {pizza?.map((item) => (
               <Item key={item._id} item={item}></Item>
             ))}
           </div>
         </TabsContent>
-        <TabsContent value="3">
+        <TabsContent value="salad">
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-6">
             {salad?.map((item) => (
               <Item key={item._id} item={item}></Item>
             ))}
           </div>
         </TabsContent>
-        <TabsContent value="4">
+        <TabsContent value="soup">
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-6">
             {soup?.map((item) => (
               <Item key={item._id} item={item}></Item>
             ))}
           </div>
         </TabsContent>
-        <TabsContent value="5">
+        <TabsContent value="drink">
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-6">
             {drinks?.map((item) => (
               <Item key={item._id} item={item}></Item>

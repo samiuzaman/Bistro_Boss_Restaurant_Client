@@ -8,12 +8,41 @@ import {
   Label,
 } from "keep-react";
 import Authentication2 from "../assets/others/authentication2.png";
-import { IoLogoGithub } from "react-icons/io5";
-import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Register = () => {
+  const { setUser, createAccount, profileUpdate } = useAuth();
+
+  const handleCreateAccount = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(`name: ${name}, email: ${email}, Password: ${password}`);
+
+    if (password.length < 6) {
+      return toast.error("Password must be used 6 characters");
+    }
+
+    const CheckPassword = /^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d@$!%*?&]{6,}$/;
+    if (!CheckPassword.test(password)) {
+      return toast.error("Must be used one capital, and one lowercase letter");
+    }
+
+    // Create new account with email & password
+    createAccount(email, password).then((result) => {
+      profileUpdate({
+        displayName: name,
+      });
+      setUser(result.user);
+      console.log(result);
+    });
+  };
+
   return (
     <div className="w-11/12 lg:w-4/5 mx-auto h-screen bg-authenticationBg flex flex-row-reverse justify-center items-center py-6">
       <Helmet>
@@ -30,7 +59,7 @@ const Register = () => {
               <CardTitle className="text-center">Register</CardTitle>
             </CardHeader>
 
-            <form className="space-y-4">
+            <form onSubmit={handleCreateAccount} className="space-y-4">
               <fieldset className="space-y-1">
                 <Label htmlFor="email">Name*</Label>
                 <div className="relative">
