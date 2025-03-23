@@ -9,7 +9,7 @@ import {
   Label,
 } from "keep-react";
 import Authentication2 from "../assets/others/authentication2.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
@@ -24,6 +24,8 @@ const Login = () => {
   const { user, setUser, loginWithGoogle, loginEmailPassword } = useAuth();
   const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -34,7 +36,9 @@ const Login = () => {
     console.log("Google Button Clicked");
     loginWithGoogle()
       .then((result) => {
-        console.log(result);
+        setUser(result.user);
+        navigate(location?.state ? location.state : "/");
+        toast.success(`Login Successful`);
       })
       .catch((error) => {
         console.log(error.message);
@@ -51,11 +55,14 @@ const Login = () => {
 
     console.log(`email: ${email}, password: ${password} captcha: ${captcha}`);
 
-    loginEmailPassword(email, password).then((result) => {
-      setUser(result.user);
-      toast.success(`Login Successful`);
-      console.log("Login User: ", result.user);
-    });
+    loginEmailPassword(email, password)
+      .then((result) => {
+        setUser(result.user);
+        navigate(location?.state ? location.state : "/");
+        toast.success(`Login Successful`);
+        console.log("Login User: ", result.user);
+      })
+      .catch((error) => toast.error(error.message));
   };
 
   const handleValidateCaptcha = () => {
@@ -119,7 +126,7 @@ const Login = () => {
                     />
                   </div>
                   <div
-                    onClick={handleValidateCaptcha}
+                    onBlur={handleValidateCaptcha}
                     className="border-2 border-success-700 bg-success-500 hover:bg-success-700 text-white px-4 py-1 rounded-md h-full"
                   >
                     Validate

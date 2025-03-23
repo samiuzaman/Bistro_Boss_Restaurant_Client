@@ -30,6 +30,7 @@ const Register = () => {
       setUser(result.user);
       profileUpdate({
         displayName: data?.name,
+        
       });
       toast.success("User Registration Successful");
       navigate("/");
