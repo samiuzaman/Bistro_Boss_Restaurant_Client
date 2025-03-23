@@ -17,6 +17,7 @@ import {
 
 import { NavLink, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import toast from "react-hot-toast";
 // w-full fixed z-10 border-none bg-opacity-30 bg-black text-white
 const NavSection = () => {
   const location = useLocation();
@@ -25,6 +26,7 @@ const NavSection = () => {
   const handleSignOutButton = () => {
     handleSignOut().then(() => {
       setUser(null);
+      toast.success(`${user.name} Logout`);
     });
   };
 
@@ -72,8 +74,8 @@ const NavSection = () => {
                     align="end"
                     className="border border-metal-100 dark:border-metal-800"
                   >
-                    <DropdownItem>Name</DropdownItem>
-                    <DropdownItem>Profile</DropdownItem>
+                    <DropdownItem>{user?.displayName}</DropdownItem>
+                    <DropdownItem>{user?.email}</DropdownItem>
                     <DropdownItem onClick={handleSignOutButton}>
                       Logout
                     </DropdownItem>

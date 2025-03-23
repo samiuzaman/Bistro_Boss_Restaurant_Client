@@ -12,38 +12,30 @@ import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
   const { setUser, createAccount, profileUpdate } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
 
-  const handleCreateAccount = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(`name: ${name}, email: ${email}, Password: ${password}`);
-
-    if (password.length < 6) {
-      return toast.error("Password must be used 6 characters");
-    }
-
-    const CheckPassword = /^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d@$!%*?&]{6,}$/;
-    if (!CheckPassword.test(password)) {
-      return toast.error("Must be used one capital, and one lowercase letter");
-    }
-
-    // Create new account with email & password
-    createAccount(email, password).then((result) => {
-      profileUpdate({
-        displayName: name,
-      });
+  const onSubmit = (data) => {
+    console.log(data);
+    createAccount(data.email, data.password).then((result) => {
       setUser(result.user);
+      profileUpdate({
+        displayName: data?.name,
+      });
       toast.success("User Registration Successful");
       navigate("/");
     });
   };
+  console.log(watch("example"));
 
   return (
     <div className="w-11/12 lg:w-4/5 mx-auto h-screen bg-authenticationBg flex flex-row-reverse justify-center items-center py-6">
@@ -61,27 +53,37 @@ const Register = () => {
               <CardTitle className="text-center">Register</CardTitle>
             </CardHeader>
 
-            <form onSubmit={handleCreateAccount} className="space-y-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <fieldset className="space-y-1">
                 <Label htmlFor="email">Name*</Label>
                 <div className="relative">
                   <Input
-                    name="name"
+                    {...register("name", { required: true })}
                     type="text"
                     placeholder="Enter Name"
-                    required
+                    className="border-none focus:border-none"
                   />
+                  {errors?.name && (
+                    <span className="text-red-600 mt-2">
+                      This field is required
+                    </span>
+                  )}
                 </div>
               </fieldset>
               <fieldset className="space-y-1">
                 <Label htmlFor="email">Email*</Label>
                 <div className="relative">
                   <Input
-                    name="email"
+                    {...register("email", { required: true })}
                     type="email"
                     placeholder="Enter Email"
-                    required
+                    className="border-none focus:border-none"
                   />
+                  {errors?.email && (
+                    <span className="text-red-600 mt-2">
+                      This field is required
+                    </span>
+                  )}
                 </div>
               </fieldset>
 
@@ -89,11 +91,36 @@ const Register = () => {
                 <Label htmlFor="password">Password*</Label>
                 <div className="relative">
                   <Input
-                    name="password"
+                    {...register("password", {
+                      required: true,
+                      minLength: 6,
+                      maxLength: 15,
+                      pattern: /^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d@$!%*?&]{6,}$/,
+                    })}
                     placeholder="Enter Password"
                     type="password"
-                    required
+                    className="border-none"
                   />
+                  {errors?.password?.type === "required" && (
+                    <span className="text-red-600 mt-2">
+                      Password is required
+                    </span>
+                  )}
+                  {errors?.password?.type === "minLength" && (
+                    <span className="text-red-600 mt-2">
+                      Password must be 6 characters
+                    </span>
+                  )}
+                  {errors?.password?.type === "maxLength" && (
+                    <span className="text-red-600 mt-2">
+                      Password must be less then 15 characters
+                    </span>
+                  )}
+                  {errors?.password?.type === "pattern" && (
+                    <span className="text-red-600 mt-2">
+                      Must be used one capital, and one lowercase letter
+                    </span>
+                  )}
                 </div>
               </fieldset>
 
