@@ -126,7 +126,7 @@ const Login = () => {
                     />
                   </div>
                   <div
-                    onBlur={handleValidateCaptcha}
+                    onClick={handleValidateCaptcha}
                     className="border-2 border-success-700 bg-success-500 hover:bg-success-700 text-white px-4 py-1 rounded-md h-full"
                   >
                     Validate

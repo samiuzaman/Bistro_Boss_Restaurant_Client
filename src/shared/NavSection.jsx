@@ -1,7 +1,6 @@
 import {
   Avatar,
   AvatarFallback,
-  Button,
   Dropdown,
   DropdownAction,
   DropdownContent,
@@ -26,7 +25,7 @@ const NavSection = () => {
   const handleSignOutButton = () => {
     handleSignOut().then(() => {
       setUser(null);
-      toast.success(`${user.name} Logout`);
+      toast.success(`User Logout Successfull!`);
     });
   };
 
@@ -67,7 +66,10 @@ const NavSection = () => {
                 <Dropdown placement="bottom-end">
                   <DropdownAction asChild>
                     <Avatar>
-                      <AvatarFallback>KR</AvatarFallback>
+                      <AvatarFallback>
+                        {user.displayName.toUpperCase().slice(0, 1)}
+                        {user.displayName.toUpperCase().slice(5, 6)}
+                      </AvatarFallback>
                     </Avatar>
                   </DropdownAction>
                   <DropdownContent
