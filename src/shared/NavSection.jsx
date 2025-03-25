@@ -67,8 +67,16 @@ const NavSection = () => {
                   <DropdownAction asChild>
                     <Avatar>
                       <AvatarFallback>
-                        {user.displayName.toUpperCase().slice(0, 1)}
-                        {user.displayName.toUpperCase().slice(5, 6)}
+                        {user?.photoURL ? (
+                          <img
+                            referrerPolicy="no-referrer"
+                            src={user.photoURL}
+                          />
+                        ) : (
+                          <span>
+                            {user?.displayName.toUpperCase().slice(0, 2)}
+                          </span>
+                        )}
                       </AvatarFallback>
                     </Avatar>
                   </DropdownAction>

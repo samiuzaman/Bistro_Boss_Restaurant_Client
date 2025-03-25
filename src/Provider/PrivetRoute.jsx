@@ -5,6 +5,10 @@ import { Spinner } from "keep-react";
 const PrivetRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
+  if (user) {
+    return children;
+  }
+  
   if (loading) {
     return (
       <div>
@@ -12,11 +16,8 @@ const PrivetRoute = ({ children }) => {
       </div>
     );
   }
-  if (user) {
-    return children;
-  } else {
-    <Navigate state={location?.pathname} to="/login"></Navigate>;
-  }
+
+  return <Navigate state={location?.pathname} to="/login"></Navigate>;
 };
 
 export default PrivetRoute;

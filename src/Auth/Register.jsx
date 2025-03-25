@@ -30,7 +30,7 @@ const Register = () => {
       setUser(result.user);
       profileUpdate({
         displayName: data?.name,
-        
+        photoURL: data?.photo,
       });
       toast.success("User Registration Successful");
       navigate("/");
@@ -66,7 +66,23 @@ const Register = () => {
                   />
                   {errors?.name && (
                     <span className="text-red-600 mt-2">
-                      This field is required
+                      Name field is required
+                    </span>
+                  )}
+                </div>
+              </fieldset>
+              <fieldset className="space-y-1">
+                <Label htmlFor="email">photo URL*</Label>
+                <div className="relative">
+                  <Input
+                    {...register("photo", { required: true })}
+                    type="text"
+                    placeholder="Enter photo URL"
+                    className="border-none focus:border-none"
+                  />
+                  {errors?.photo && (
+                    <span className="text-red-600 mt-2">
+                      Photo URL is required
                     </span>
                   )}
                 </div>
@@ -82,7 +98,7 @@ const Register = () => {
                   />
                   {errors?.email && (
                     <span className="text-red-600 mt-2">
-                      This field is required
+                      Email field is required
                     </span>
                   )}
                 </div>

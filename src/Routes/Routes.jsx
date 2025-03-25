@@ -7,6 +7,8 @@ import OurMenu from "../Pages/OurMenu";
 import OurShop from "../Pages/OurShop";
 import Login from "../Auth/Login";
 import Register from "../Auth/Register";
+import Details from "../Pages/Details";
+import PrivetRoute from "../Provider/PrivetRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ const Routes = createBrowserRouter([
       {
         path: "/our-shop/:category",
         element: <OurShop></OurShop>,
+      },
+      {
+        path: "/details",
+        element: (
+          <PrivetRoute>
+            <Details></Details>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/login",
