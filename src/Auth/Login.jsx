@@ -21,7 +21,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 const Login = () => {
-  const { user, setUser, loginWithGoogle, loginEmailPassword } = useAuth();
+  const { setUser, loginWithGoogle, loginEmailPassword } = useAuth();
   const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
   const location = useLocation();

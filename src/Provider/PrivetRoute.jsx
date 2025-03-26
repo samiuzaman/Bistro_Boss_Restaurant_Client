@@ -7,17 +7,9 @@ const PrivetRoute = ({ children }) => {
   const location = useLocation();
   if (user) {
     return children;
+  } else {
+    return <Navigate state={location.pathname} to="/login"></Navigate>;
   }
-  
-  if (loading) {
-    return (
-      <div>
-        <Spinner></Spinner>
-      </div>
-    );
-  }
-
-  return <Navigate state={location?.pathname} to="/login"></Navigate>;
 };
 
 export default PrivetRoute;

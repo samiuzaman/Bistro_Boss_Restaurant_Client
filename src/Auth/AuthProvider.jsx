@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
   // Log retention function
   useEffect(() => {
     const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser?.email) {
+      if (currentUser.email) {
         setUser(currentUser);
         setLoading(false);
       }

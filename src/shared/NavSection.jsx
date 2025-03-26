@@ -1,6 +1,7 @@
 import {
   Avatar,
   AvatarFallback,
+  Button,
   Dropdown,
   DropdownAction,
   DropdownContent,
@@ -13,6 +14,7 @@ import {
   NavbarItem,
   NavbarList,
 } from "keep-react";
+import { ShoppingCart } from "phosphor-react";
 
 import { NavLink, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
@@ -59,8 +61,20 @@ const NavSection = () => {
               <NavLink to="/our-menu">OUR MENU</NavLink>
             </NavbarItem>
             <NavbarItem className="text-white">
-              <NavLink to="/our-shop">OUR SHOP</NavLink>
+              <NavLink to="/our-shop/dessert">OUR SHOP</NavLink>
             </NavbarItem>
+
+            <Button
+              variant="softBg"
+              shape="circle"
+              className="hover:text-white relative p-10 mr-5"
+            >
+              <ShoppingCart size={20} />
+              <span className="absolute bg-red-500 top-5 left-5 px-2 py-1 rounded-full text-white text-xs">
+                1
+              </span>
+            </Button>
+
             <div className="flex justify-center items-center">
               {user?.email ? (
                 <Dropdown placement="bottom-end">
