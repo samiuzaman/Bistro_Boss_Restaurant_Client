@@ -9,6 +9,7 @@ import Login from "../Auth/Login";
 import Register from "../Auth/Register";
 import Details from "../Pages/Details";
 import PrivetRoute from "../Provider/PrivetRoute";
+import Cart from "../Components/Dashboard/Cart";
 
 const Routes = createBrowserRouter([
   {
@@ -22,10 +23,6 @@ const Routes = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact></Contact>,
-      },
-      {
-        path: "/dashboard",
-        element: <Dashboard></Dashboard>,
       },
       {
         path: "/our-menu",
@@ -51,6 +48,16 @@ const Routes = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "/dashboard/cart",
+        element: <Cart></Cart>,
       },
     ],
   },

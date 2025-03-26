@@ -19,10 +19,12 @@ import { ShoppingCart } from "phosphor-react";
 import { NavLink, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
+import useCart from "../Hooks/useCart";
 // w-full fixed z-10 border-none bg-opacity-30 bg-black text-white
 const NavSection = () => {
   const location = useLocation();
   const { setUser, user, handleSignOut } = useAuth();
+  const [cart] = useCart();
   console.log("Navbar check user", user);
   const handleSignOutButton = () => {
     handleSignOut().then(() => {
@@ -64,16 +66,18 @@ const NavSection = () => {
               <NavLink to="/our-shop/dessert">OUR SHOP</NavLink>
             </NavbarItem>
 
-            <Button
-              variant="softBg"
-              shape="circle"
-              className="hover:text-white relative p-10 mr-5"
-            >
-              <ShoppingCart size={20} />
-              <span className="absolute bg-red-500 top-5 left-5 px-2 py-1 rounded-full text-white text-xs">
-                1
-              </span>
-            </Button>
+            <NavLink to="/dashboard/cart">
+              <Button
+                variant="softBg"
+                shape="circle"
+                className="hover:text-white relative p-10 mr-5"
+              >
+                <ShoppingCart size={20} />
+                <span className="absolute bg-red-500 top-5 left-5 px-2 py-1 rounded-full text-white text-xs">
+                  {cart.length}
+                </span>
+              </Button>
+            </NavLink>
 
             <div className="flex justify-center items-center">
               {user?.email ? (

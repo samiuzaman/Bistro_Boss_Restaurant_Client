@@ -11,14 +11,16 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useCart from "../../Hooks/useCart";
 
 const Item = ({ item }) => {
   const { user } = useAuth();
   const { _id, name, image, recipe, category, price } = item || {};
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
+  const [, refetch] = useCart();
 
-  const handleAddToCart = (food) => {
+  const handleAddToCart = () => {
     if (user && user?.email) {
       // Send cart item to the database
       const cartItem = {
@@ -35,6 +37,8 @@ const Item = ({ item }) => {
         if (res.data.insertedId) {
           toast.success(`${name} added to cart`);
         }
+        // refetch cart to update the cart items count
+        refetch();
       });
     } else {
       toast((t) => (
@@ -67,7 +71,7 @@ const Item = ({ item }) => {
           <CardTitle>{name}</CardTitle>
           <CardDescription>{recipe}</CardDescription>
           <Button
-            onClick={() => handleAddToCart(item)}
+            onClick={handleAddToCart}
             variant="softBg"
             className="border-b-2 border-[#BB8506] text-[#BB8506] hover:bg-[#1F2937] hover:text-[#BB8506]"
           >
