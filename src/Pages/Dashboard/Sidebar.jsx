@@ -11,7 +11,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 const Sidebar = () => {
   return (
-    <div className="w-64 min-h-screen bg-[#D1A054] ">
+    <div className="w-full lg:w-64 min-h-screen bg-[#D1A054] ">
       <div className="my-12">
         <h4 className="pl-6 text-2xl text-black font-extrabold font-[Cinzel]">
           Bistro Boss
