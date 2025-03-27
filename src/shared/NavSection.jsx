@@ -66,7 +66,7 @@ const NavSection = () => {
               <NavLink to="/our-shop/dessert">OUR SHOP</NavLink>
             </NavbarItem>
 
-            <NavLink to="/dashboard/cart">
+            <NavLink to="/dashboard/my-cart">
               <Button
                 variant="softBg"
                 shape="circle"
