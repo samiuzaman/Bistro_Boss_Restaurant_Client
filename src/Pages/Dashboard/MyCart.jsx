@@ -1,4 +1,4 @@
-import { Button } from "keep-react";
+import { Button, Spinner } from "keep-react";
 import Title from "../../shared/Title";
 import {
   Avatar,
@@ -16,9 +16,17 @@ import toast from "react-hot-toast";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const MyCart = () => {
-  const [cart, refetch] = useCart();
+  const [cart, refetch, isLoading, isFetching] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
   const axiosSecure = useAxiosSecure();
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <Spinner></Spinner>
+      </div>
+    );
+  }
 
   const handleDeleteItem = (id) => {
     toast.dismiss();
@@ -56,7 +64,7 @@ const MyCart = () => {
       <div className="w-11/12 lg:w-4/5 mx-auto bg-white rounded-lg shadow-sm p-10 mt-10 space-y-4">
         <div className="flex justify-between items-center">
           <span className="text-2xl font-[Cinzel] font-semibold">
-            Total Oders: {cart?.length}
+            Total Items: {cart?.length}
           </span>
           <span className="text-2xl font-[Cinzel] font-semibold">
             Total Price: ${totalPrice}
