@@ -13,9 +13,10 @@ import { Helmet } from "react-helmet-async";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import UseAxiosPublic from "../Hooks/UseAxiosPublic";
 
 const Register = () => {
-  const { setUser, createAccount, profileUpdate } = useAuth();
+  const { setUser, loginWithGoogle, createAccount, profileUpdate } = useAuth();
   const {
     register,
     handleSubmit,
@@ -23,6 +24,28 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+  const axiosPublic = UseAxiosPublic();
+
+  // Login with Google
+  const handleLoginGoogle = () => {
+    console.log("Google Button Clicked");
+    loginWithGoogle()
+      .then((result) => {
+        setUser(result.user);
+        const userInfo = {
+          name: result?.user?.displayName,
+          email: result?.user?.email,
+          photo: result?.user?.photoURL,
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          navigate(location?.state ? location.state : "/");
+          toast.success(`Login Successful`);
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   const onSubmit = (data) => {
     console.log(data);
@@ -32,8 +55,17 @@ const Register = () => {
         displayName: data?.name,
         photoURL: data?.photo,
       });
-      toast.success("User Registration Successful");
-      navigate("/");
+      const userInfo = {
+        name: data?.name,
+        email: data?.email,
+        photo: data?.photo,
+      };
+      axiosPublic.post(`/users`, userInfo).then((res) => {
+        if (res.data.insertedId) {
+          toast.success("User Registration Successful");
+          navigate("/");
+        }
+      });
     });
   };
   console.log(watch("example"));
@@ -152,6 +184,19 @@ const Register = () => {
                   <span className="font-semibold pl-2">Go to log in</span>
                 </Link>
               </p>
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <Button
+                onClick={handleLoginGoogle}
+                variant="outline"
+                color="secondary"
+              >
+                <img
+                  src="https://i.ibb.co/TvvzXfq/google.png"
+                  className="w-8 h-8 mr-2"
+                />
+                Register with Google
+              </Button>
             </div>
           </CardContent>
         </Card>

@@ -10,11 +10,11 @@ import {
   updateProfile,
 } from "firebase/auth";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // Login with Google
   const googleProvider = new GoogleAuthProvider();
@@ -57,11 +57,10 @@ const AuthProvider = ({ children }) => {
   // Log retention function
   useEffect(() => {
     const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser.email) {
-        setUser(currentUser);
-        setLoading(false);
-      }
+      setUser(currentUser);
+      setLoading(false);
     });
+
     return () => {
       unsubcribe();
     };

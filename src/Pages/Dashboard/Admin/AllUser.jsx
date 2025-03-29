@@ -1,6 +1,7 @@
-import { Button, Spinner } from "keep-react";
-import Title from "../../shared/Title";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 import {
+  Button,
   Table,
   TableBody,
   TableCell,
@@ -8,25 +9,25 @@ import {
   TableHeader,
   TableRow,
 } from "keep-react";
-import useCart from "../../Hooks/useCart";
-import { MdDelete } from "react-icons/md";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import toast from "react-hot-toast";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Title from "../../../shared/Title";
+import { FaUser } from "react-icons/fa";
+import { GrUserAdmin } from "react-icons/gr";
 
-const MyCart = () => {
-  const [cart, refetch, isLoading, isFetching] = useCart();
-  const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+const AllUser = () => {
   const axiosSecure = useAxiosSecure();
 
-  if (isLoading) {
-    return (
-      <div className="w-full h-screen flex justify-center items-center">
-        <Spinner></Spinner>
-      </div>
-    );
-  }
+  const { refetch, data: users = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/users");
+      return res.data;
+    },
+  });
+  console.log(users);
 
-  const handleDeleteItem = (id) => {
+  const handleDeleteUser = (id) => {
     toast.dismiss();
     toast((t) => (
       <p className="space-x-3">
@@ -36,7 +37,7 @@ const MyCart = () => {
         </p>
         <Button
           onClick={() => {
-            axiosSecure.delete(`carts/${id}`).then((res) => {
+            axiosSecure.delete(`/users/${id}`).then((res) => {
               console.log(res);
               if (res.data.deletedCount > 0) {
                 refetch();
@@ -58,21 +59,12 @@ const MyCart = () => {
 
   return (
     <div>
-      <Title title="MANAGE ALL ITEMS" subtitle="---Hurry Up!---"></Title>
+      <Title title="MANAGE ALL USERS" subtitle="---How many??---"></Title>
       <div className="w-11/12 lg:w-4/5 mx-auto bg-white rounded-lg shadow-sm p-10 mt-10 space-y-4">
-        <div className="flex justify-between items-center">
+        <div>
           <span className="text-2xl font-[Cinzel] font-semibold">
-            Total Items: {cart?.length}
+            Total Items: {users?.length}
           </span>
-          <span className="text-2xl font-[Cinzel] font-semibold">
-            Total Price: ${totalPrice}
-          </span>
-          <Button
-            color="warning"
-            className="hover:bg-[#D1A054] text-lg font-semibold"
-          >
-            Pay
-          </Button>
         </div>
         <div>
           <Table>
@@ -86,7 +78,10 @@ const MyCart = () => {
                   Name
                 </TableHead>
                 <TableHead className="bg-[#D1A054] text-white font-bold">
-                  Price
+                  Email
+                </TableHead>
+                <TableHead className="bg-[#D1A054] text-white font-bold">
+                  Role
                 </TableHead>
                 <TableHead className="bg-[#D1A054] text-white text-center">
                   Action
@@ -94,26 +89,40 @@ const MyCart = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {cart?.map((item, index) => (
-                <TableRow key={item._id}>
+              {users?.map((user, index) => (
+                <TableRow key={user._id}>
                   <TableCell>{index + 1}</TableCell>
                   <TableCell>
                     <div className="w-16 h-16 rounded-md border-2">
-                      <img src={item.image} className="w-full h-full" />
+                      <img src={user.photo} className="w-full h-full" />
                     </div>
                   </TableCell>
 
                   <TableCell className="text-lg font-medium">
-                    {item.name}
+                    {user.name}
                   </TableCell>
-                  <TableCell>${item.price}</TableCell>
-                  <TableCell className="flex items-center justify-center gap-5 lg:gap-10 xl:gap-12 text-2xl text-white ">
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell className="text-2xl">
                     <span
-                      onClick={() => handleDeleteItem(item?._id)}
-                      className="bg-error-600 p-2 rounded-md cursor-pointer"
+                      onClick={() => handleDeleteUser(user?._id)}
+                      className=" p-2 rounded-md cursor-pointer"
                     >
-                      <MdDelete />
+                      <FaUser />
                     </span>
+                    <span
+                      onClick={() => handleDeleteUser(user?._id)}
+                      className=" p-2 rounded-md cursor-pointer"
+                    >
+                      <GrUserAdmin />
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-4xl text-white">
+                    <div
+                      onClick={() => handleDeleteUser(user?._id)}
+                      className="rounded-md cursor-pointer"
+                    >
+                      <RiDeleteBin6Line className="border-2 p-1 bg-[#B91C1C] rounded-md" />
+                    </div>
                   </TableCell>
                 </TableRow>
               ))}
@@ -125,4 +134,4 @@ const MyCart = () => {
   );
 };
 
-export default MyCart;
+export default AllUser;

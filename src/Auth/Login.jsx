@@ -19,6 +19,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { useEffect, useRef, useState } from "react";
+import UseAxiosPublic from "../Hooks/UseAxiosPublic";
 
 const Login = () => {
   const { setUser, loginWithGoogle, loginEmailPassword } = useAuth();
@@ -26,6 +27,7 @@ const Login = () => {
   const [disabled, setDisabled] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
+  const axiosPublic = UseAxiosPublic();
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -37,8 +39,15 @@ const Login = () => {
     loginWithGoogle()
       .then((result) => {
         setUser(result.user);
-        navigate(location?.state ? location.state : "/");
-        toast.success(`Login Successful`);
+        const userInfo = {
+          name: result?.user?.displayName,
+          email: result?.user?.email,
+          photo: result?.user?.photoURL,
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          navigate(location?.state ? location.state : "/");
+          toast.success(`Login Successful`);
+        });
       })
       .catch((error) => {
         console.log(error.message);

@@ -6,3 +6,16 @@
 a.active {
   @apply text-white;
 }
+
+.admin-card-one-bg {
+  background-image: linear-gradient(to right, #bd1acc, #fcdbff);
+}
+.admin-card-two-bg {
+  background-image: linear-gradient(to right, #d3a256, #fde8c0);
+}
+.admin-card-three-bg {
+  background-image: linear-gradient(to right, #fe4880, #fecde9);
+}
+.admin-card-four-bg {
+  background-image: linear-gradient(to right, #6AAEFF, #B6F7FF);
+}

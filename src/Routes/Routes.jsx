@@ -10,14 +10,10 @@ import Details from "../Pages/Details";
 import PrivetRoute from "../Provider/PrivetRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import MyCart from "../Pages/Dashboard/MyCart";
-import AdminHome from "../Pages/Dashboard/AdminHome";
 import AddItems from "../Pages/Dashboard/AddItems";
 import ManageBooking from "../Pages/Dashboard/ManageBooking";
-import AllUser from "../Pages/Dashboard/AllUser";
-import Menu from "../Pages/Dashboard/Menu";
-import Shop from "../Pages/Dashboard/Shop";
-import DContact from "../Pages/Dashboard/Contact";
-import DHome from "../Pages/Dashboard/Home";
+import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
+import AllUser from "../Pages/Dashboard/Admin/AllUser";
 
 const Routes = createBrowserRouter([
   {
@@ -61,7 +57,11 @@ const Routes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivetRoute>
+        <Dashboard></Dashboard>
+      </PrivetRoute>
+    ),
     children: [
       // 1st section
       {
@@ -83,24 +83,6 @@ const Routes = createBrowserRouter([
       {
         path: "/dashboard/all-user",
         element: <AllUser></AllUser>,
-      },
-
-      // 2nd section
-      {
-        path: "/dashboard/home",
-        element: <DHome></DHome>,
-      },
-      {
-        path: "/dashboard/menu",
-        element: <Menu></Menu>,
-      },
-      {
-        path: "/dashboard/shop",
-        element: <Shop></Shop>,
-      },
-      {
-        path: "/dashboard/contact",
-        element: <DContact></DContact>,
       },
     ],
   },
