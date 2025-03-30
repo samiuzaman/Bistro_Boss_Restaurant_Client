@@ -1,5 +1,6 @@
 import { Button, Input, Label, Textarea } from "keep-react";
 import Title from "../../shared/Title";
+import { ImSpoonKnife } from "react-icons/im";
 
 const AddItems = () => {
   return (
@@ -53,8 +54,11 @@ const AddItems = () => {
           </fieldset>
           <div>I am not a robot</div>
 
-          <Button type="submit" className="!mt-3 block bg-[#e2ac5c] hover:bg-[#8a6025]">
-            Add Item
+          <Button
+            type="submit"
+            className="!mt-3 dashboard-btn  hover:bg-[#8a6025] flex gap-2 rounded-none"
+          >
+            Add Item <ImSpoonKnife />
           </Button>
         </form>
       </div>

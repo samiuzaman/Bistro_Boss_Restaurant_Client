@@ -17,5 +17,9 @@ a.active {
   background-image: linear-gradient(to right, #fe4880, #fecde9);
 }
 .admin-card-four-bg {
-  background-image: linear-gradient(to right, #6AAEFF, #B6F7FF);
+  background-image: linear-gradient(to right, #6aaeff, #b6f7ff);
+}
+
+.dashboard-btn {
+  background-image: linear-gradient(to right, #835d23, #b58130);
 }

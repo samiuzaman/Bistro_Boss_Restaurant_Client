@@ -41,12 +41,13 @@ const Sidebar = () => {
                   <MdOutlineRestaurantMenu className="text-xl" /> Add Items
                 </NavLink>
               </li>
+
               <li>
                 <NavLink
-                  to="/dashboard/my-cart"
+                  to="/dashboard/manage-items"
                   className="flex gap-1 items-center text-lg"
                 >
-                  <FaCartShopping className="text-xl" /> My Cart
+                  <FaBook className="text-xl" /> Manage Items
                 </NavLink>
               </li>
               <li>
@@ -71,7 +72,7 @@ const Sidebar = () => {
               {/* User Nav Link */}
               <li>
                 <NavLink
-                  to="/dashboard/admin-home"
+                  to="/dashboard/user-home"
                   className="flex gap-1 items-center text-lg"
                 >
                   <IoIosHome className="text-xl" /> User Home
@@ -79,7 +80,7 @@ const Sidebar = () => {
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/add-itmes"
+                  to="/dashboard/reservation"
                   className="flex gap-1 items-center text-lg"
                 >
                   <FaCalendar className="text-xl" /> Reservation
@@ -95,7 +96,7 @@ const Sidebar = () => {
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/manage-booking"
+                  to="/dashboard/payment-history"
                   className="flex gap-1 items-center text-lg"
                 >
                   <GiWallet className="text-xl" /> Payment History
@@ -103,7 +104,7 @@ const Sidebar = () => {
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/all-user"
+                  to="/dashboard/add-review"
                   className="flex gap-1 items-center text-lg"
                 >
                   <MdReviews className="text-xl" /> Add review
@@ -111,7 +112,7 @@ const Sidebar = () => {
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/all-user"
+                  to="/dashboard/my-booking"
                   className="flex gap-1 items-center text-lg"
                 >
                   <PiNotebookBold className="text-xl" /> My Booking
