@@ -27,7 +27,7 @@ const Sidebar = () => {
               {/* Admin Nav Link */}
               <li>
                 <NavLink
-                  to="/dashboard/admin-home"
+                  to="/dashboard"
                   className="flex gap-1 items-center text-lg"
                 >
                   <IoIosHome className="text-xl" /> Admin Home

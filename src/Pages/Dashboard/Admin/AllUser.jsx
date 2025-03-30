@@ -12,8 +12,7 @@ import {
 import { RiDeleteBin6Line } from "react-icons/ri";
 import toast from "react-hot-toast";
 import Title from "../../../shared/Title";
-import { FaUser } from "react-icons/fa";
-import { GrUserAdmin } from "react-icons/gr";
+import { FaUserGroup } from "react-icons/fa6";
 
 const AllUser = () => {
   const axiosSecure = useAxiosSecure();
@@ -55,6 +54,16 @@ const AllUser = () => {
         </Button>
       </p>
     ));
+  };
+
+  const handleMakeAdmin = (user) => {
+    axiosSecure.patch(`/users/admin/${user?._id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        toast.success(`${user?.name} is admin now.`);
+      }
+    });
   };
 
   return (
@@ -103,18 +112,16 @@ const AllUser = () => {
                   </TableCell>
                   <TableCell>{user.email}</TableCell>
                   <TableCell className="text-2xl">
-                    <span
-                      onClick={() => handleDeleteUser(user?._id)}
-                      className=" p-2 rounded-md cursor-pointer"
-                    >
-                      <FaUser />
-                    </span>
-                    <span
-                      onClick={() => handleDeleteUser(user?._id)}
-                      className=" p-2 rounded-md cursor-pointer"
-                    >
-                      <GrUserAdmin />
-                    </span>
+                    {user.role === "admin" ? (
+                      <span className="text-base">Admin</span>
+                    ) : (
+                      <span
+                        onClick={() => handleMakeAdmin(user)}
+                        className=" p-2 rounded-md cursor-pointer"
+                      >
+                        <FaUserGroup />
+                      </span>
+                    )}
                   </TableCell>
                   <TableCell className="text-4xl text-white">
                     <div

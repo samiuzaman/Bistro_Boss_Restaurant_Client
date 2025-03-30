@@ -65,7 +65,7 @@ const Routes = createBrowserRouter([
     children: [
       // 1st section
       {
-        path: "/dashboard/admin-home",
+        path: "/dashboard",
         element: <AdminHome></AdminHome>,
       },
       {
