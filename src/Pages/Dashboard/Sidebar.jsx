@@ -9,9 +9,11 @@ import { RiContactsBook3Line } from "react-icons/ri";
 import { GiShoppingBag, GiWallet } from "react-icons/gi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { PiNotebookBold } from "react-icons/pi";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Sidebar = () => {
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
+  console.log(`Dashboard Nav`, isAdmin);
   return (
     <div className="w-full lg:w-64 min-h-screen bg-[#D1A054] ">
       <div className="my-12">
@@ -22,7 +24,7 @@ const Sidebar = () => {
       </div>
       <div className="px-6">
         <ul className="font-[Cinzel] font-semibold space-y-6">
-          {isAdmin ? (
+          {isAdmin?.data.admin === true ? (
             <>
               {/* Admin Nav Link */}
               <li>

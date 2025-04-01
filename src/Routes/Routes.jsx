@@ -14,6 +14,7 @@ import AddItems from "../Pages/Dashboard/AddItems";
 import ManageBooking from "../Pages/Dashboard/ManageBooking";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
 import AllUser from "../Pages/Dashboard/Admin/AllUser";
+import AdminRoute from "../Provider/AdminRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -82,7 +83,11 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/dashboard/all-user",
-        element: <AllUser></AllUser>,
+        element: (
+          <AdminRoute>
+            <AllUser></AllUser>
+          </AdminRoute>
+        ),
       },
     ],
   },

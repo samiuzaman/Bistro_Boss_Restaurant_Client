@@ -110,7 +110,7 @@ const AllUser = () => {
                   <TableCell className="text-lg font-medium">
                     {user.name}
                   </TableCell>
-                  <TableCell>{user.email}</TableCell>
+                  <TableCell className="lowercase">{user.email}</TableCell>
                   <TableCell className="text-2xl">
                     {user.role === "admin" ? (
                       <span className="text-base">Admin</span>
