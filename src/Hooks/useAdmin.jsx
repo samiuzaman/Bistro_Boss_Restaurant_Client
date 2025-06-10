@@ -13,6 +13,7 @@ const useAdmin = () => {
       return res;
     },
   });
+  console.log("isAdmin = useAdmin: ", isAdmin?.data?.admin);
   return [isAdmin, isAdminLoading];
 };
 

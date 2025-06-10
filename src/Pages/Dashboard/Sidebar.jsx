@@ -46,7 +46,7 @@ const Sidebar = () => {
 
               <li>
                 <NavLink
-                  to="/dashboard/manage-items"
+                  to="/dashboard/manage-item"
                   className="flex gap-1 items-center text-lg"
                 >
                   <FaBook className="text-xl" /> Manage Items

@@ -10,11 +10,12 @@ import Details from "../Pages/Details";
 import PrivetRoute from "../Provider/PrivetRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import MyCart from "../Pages/Dashboard/MyCart";
-import AddItems from "../Pages/Dashboard/AddItems";
 import ManageBooking from "../Pages/Dashboard/ManageBooking";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
 import AllUser from "../Pages/Dashboard/Admin/AllUser";
 import AdminRoute from "../Provider/AdminRoute";
+import AddItems from "../Pages/Dashboard/Admin/AddItems";
+import ManageItems from "../Pages/Dashboard/Admin/ManageItems";
 
 const Routes = createBrowserRouter([
   {
@@ -64,22 +65,30 @@ const Routes = createBrowserRouter([
       </PrivetRoute>
     ),
     children: [
-      // 1st section
+      // Admin Route
       {
         path: "/dashboard",
-        element: <AdminHome></AdminHome>,
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/add-itmes",
-        element: <AddItems></AddItems>,
-      },
-      {
-        path: "/dashboard/my-cart",
-        element: <MyCart></MyCart>,
+        element: (
+          <AdminRoute>
+            <AddItems></AddItems>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/manage-booking",
-        element: <ManageBooking></ManageBooking>,
+        element: (
+          <AdminRoute>
+            <ManageBooking></ManageBooking>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/all-user",
@@ -88,6 +97,19 @@ const Routes = createBrowserRouter([
             <AllUser></AllUser>
           </AdminRoute>
         ),
+      },
+      {
+        path: "/dashboard/manage-item",
+        element: (
+          <AdminRoute>
+            <ManageItems></ManageItems>
+          </AdminRoute>
+        ),
+      },
+      // Users Routes
+      {
+        path: "/dashboard/my-cart",
+        element: <MyCart></MyCart>,
       },
     ],
   },
