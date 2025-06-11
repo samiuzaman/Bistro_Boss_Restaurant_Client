@@ -40,7 +40,7 @@ const AllUser = () => {
               console.log(res);
               if (res.data.deletedCount > 0) {
                 refetch();
-                toast.success("Item Delete SuccessFull!");
+                toast.success("User Deleted SuccessFull!");
               }
             });
             toast.dismiss();
@@ -67,7 +67,7 @@ const AllUser = () => {
   };
 
   return (
-    <div>
+    <div className="mb-16">
       <Title title="MANAGE ALL USERS" subtitle="---How many??---"></Title>
       <div className="w-11/12 lg:w-4/5 mx-auto bg-white rounded-lg shadow-sm p-10 mt-10 space-y-4">
         <div>
