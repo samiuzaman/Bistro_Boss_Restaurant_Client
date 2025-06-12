@@ -1,5 +1,4 @@
-import { Info, Trash } from "phosphor-react";
-import { useCallback, useState } from "react";
+import {useState } from "react";
 import {
   Button,
   Input,
@@ -50,7 +49,6 @@ const AddItems = () => {
         recipe: data.recipe,
         image: res.data.data.display_url,
       };
-      toast.success("Success!");
       const menuRes = await axiosSecure.post("/menu", menuItem);
       console.log("With images Url", menuRes.data);
       if (menuRes?.data?.insertedId) {
